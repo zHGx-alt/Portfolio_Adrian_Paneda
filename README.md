@@ -73,7 +73,7 @@ Each project will have its own repository, detailed explanation, and clean code.
 If you want to get in touch, collaborate, or just explore, you can find me here:
 
 * Email: adelafiguera180@gmail.com
-* LinkedIn: https://www.linkedin.com/in/adrián-pańeda-de-la-figuera-3ab721396/
+* LinkedIn: https://www.linkedin.com/in/adrian-paneda-de-la-figuera/
 * Location: Bilbao, Spain
 
 ***
