@@ -37,7 +37,7 @@ A complete exploratory analysis of a real dataset, including:
 * Insights and conclusions  
 
 * Technologies: Python, Pandas, NumPy, Matplotlib, Seaborn  
-* Repository: (add your EDA repo link here)
+* Repository: * Repository: [EDA Project](./EDA)
 
 ---
 
@@ -51,7 +51,7 @@ A supervised Machine Learning project including:
 * Interpretation of results  
 
 * Technologies: Python, Scikit-learn, Pandas  
-* Repository: (add your ML repo link here)
+* Repository: * Repository: [Machine Learning Project](./ML)
 
 ***
 ## Ongoing and Future Projects
@@ -90,7 +90,7 @@ Each project will include clean code, documentation, and clear business-oriented
 If you would like to get in touch or collaborate:
 
 * Email: adelafiguera180@gmail.com  
-* LinkedIn: https://www.linkedin.com/in/adrián-pańeda-de-la-figuera-3ab721396/  
+* LinkedIn: https://www.linkedin.com/in/adrian-paneda-de-la-figuera/
 * Location: Bilbao, Spain  
 
 ***
