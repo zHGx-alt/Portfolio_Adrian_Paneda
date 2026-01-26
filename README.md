@@ -1,93 +1,84 @@
 # Portfolio — Adrián Pañeda
 
-Bienvenido a mi portfolio.  
-Aquí recopilo los proyectos que voy desarrollando mientras me formo en **Data Science**, **Inteligencia Artificial** y **programación en Python**.
+Welcome to my portfolio.
+Here I collect the projects I develop while training in Data Science, Artificial Intelligence, and programming in Python.
 
-Mi objetivo es seguir construyendo soluciones reales que me permitan crecer como profesional y aplicar mis conocimientos a problemas prácticos.
+My goal is to continue building real solutions that allow me to grow professionally and apply my knowledge to practical problems.
 
----
+***
+## About Me
 
-## Sobre mí
+I am a student of Data Science and Business-Applied Artificial Intelligence, currently training in:
 
-Soy estudiante de **Data Science e Inteligencia Artificial aplicada a negocio**, actualmente en formación en:
+* The Bridge — Bootcamp in Data Science and Generative AI (ongoing)
+* Racks Academy — AI applied to business (ongoing)
 
-- The Bridge — Bootcamp en Data Science e IA Generativa (en curso)  
-- Racks Academy — IA aplicada a negocios (en curso)  
+I am particularly interested in:
 
-Me interesa especialmente:
+* Machine Learning
+* Data analysis and visualization
+* LLMs and generative AI
+* Automation with Python and n8n
 
-- Machine Learning  
-- Análisis y visualización de datos  
-- LLMs e IA generativa  
-- Automatización con Python y n8n  
-- Desarrollo de herramientas útiles para empresas  
+This portfolio reflects my progress and my learning in an honest, structured, and constantly evolving way.
 
-Este portfolio refleja mi progreso y mis aprendizajes de forma honesta, estructurada y en constante evolución.
+***
+## Featured Projects
 
----
+### 1. Battleship — Python Game
 
-## Proyectos destacados
+Individual project
 
-### 1. Hundir la Flota — Juego en Python
+A fully developed Python game that replicates the classic Battleship.
+This project allowed me to work on programming logic, modularity, and data structures.
 
-**Proyecto individual**
+* Repository: (add the link here)
+* Technologies: Python (lists, conditionals, modules)
 
-Un juego completamente desarrollado en Python que replica el clásico *Hundir la flota*.  
-Este proyecto me permitió trabajar la lógica de programación, la modularización y las estructuras de datos.
+***
+## Upcoming Projects (In Progress)
 
-- Repositorio: *(añade el enlace aquí)*  
-- Tecnologías: Python (listas, condicionales, módulos)
+These projects will be available in the coming weeks as I progress in my training:
 
----
+* Exploratory Data Analysis (EDA) of real datasets
+* Supervised Machine Learning models
+* Final bootcamp project (with a company partner)
+* Automations with n8n + generative AI
+* Dashboards and interactive visualizations
 
-## Próximos proyectos (en proceso)
+Each project will have its own repository, detailed explanation, and clean code.
 
-Estos proyectos estarán disponibles en las próximas semanas conforme avance en mi formación:
+***
+## Technologies and Tools
 
-- Análisis exploratorio de datos (EDA) de datasets reales  
-- Modelos de Machine Learning supervisado  
-- Proyecto final del bootcamp (con empresa colaboradora)  
-- Automatizaciones con n8n + IA generativa  
-- Dashboards y visualizaciones interactivas  
+* Python
+* Pandas, NumPy
+* SQL
+* Jupyter Notebook
+* Git and GitHub
+* n8n
+* ChatGPT, Gemini, LLMs
+* Visual Studio Code
+* Docker
+* Flask
+* AWS
+* Data visualization
+* Scikit-learn
+* Streamlit
+* PySpark
 
-Cada proyecto tendrá su propio repositorio, explicación detallada y código limpio.
+***
+## Contact
 
----
+If you want to get in touch, collaborate, or just explore, you can find me here:
 
-## Tecnologías y herramientas
+* Email: adelafiguera180@gmail.com
+* LinkedIn: https://www.linkedin.com/in/adrián-pańeda-de-la-figuera-3ab721396/
+* Location: Bilbao, Spain
 
-- Python  
-- Pandas, NumPy  
-- SQL 
-- Jupyter Notebook  
-- Git y GitHub  
-- n8n  
-- ChatGPT, Gemini, LLMs  
-- Visual Studio Code
-- Docker
-- Flask
-- AWS
-- Visualizacion de datos
-- Scikit-learn
-- Streamlit
-- PySpark
+***
+## Final Note
 
----
-
-## Contacto
-
-Si quieres ponerte en contacto conmigo, colaborar o simplemente curiosear, aquí me puedes encontrar:
-
-- Email: adelafiguera180@gmail.com  
-- LinkedIn:  
-  https://www.linkedin.com/in/adri%C3%A1n-pa%C3%B1eda-de-la-figuera-3ab721396/  
-- Ubicación: Bilbao, España  
-
----
-
-## Nota final
-
-Este portfolio está en construcción activa.  
-Gradualmente añado nuevos proyectos, mejoras y aprendizajes.
-
-Gracias por visitar mi trabajo.
+This portfolio is actively under construction.
+I gradually add new projects, improvements, and learnings.
+Thank you for visiting my work.
