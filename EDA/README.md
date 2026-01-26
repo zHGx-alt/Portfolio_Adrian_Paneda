@@ -1,80 +1,80 @@
-# Análisis Exploratorio de Datos Musicales (Spotify Dataset)
+# Exploratory Data Analysis of Musical Data (Spotify Dataset)
 
-## Descripción del proyecto
+## Project Description
 
-Este proyecto consiste en un análisis exploratorio (EDA) de un dataset musical.  
-El objetivo es comprender mejor las características de las canciones, identificar patrones, relaciones entre variables y detectar posibles anomalías.
+This project consists of an **Exploratory Data Analysis (EDA)** of a musical dataset obtained from Spotify.  
+The main objective is to better understand the characteristics of the songs, identify patterns, relationships between variables, and detect potential anomalies.
 
-El análisis se ha realizado en un Jupyter Notebook siguiendo un flujo claro de limpieza, visualización y conclusiones.
-
----
-
-## Hipótesis inicial
-
-Al observar las columnas del dataset, planteé la siguiente hipótesis:
-
-> "Seré capaz de identificar los artistas, canciones y álbumes más populares; encontrar las canciones más enérgicas, alegres, largas y cortas; ver posibles anomalías y analizar si algunas variables musicales están relacionadas entre sí."
+The analysis was performed in a Jupyter Notebook following a clear workflow of data cleaning, visualization, and final conclusions.
 
 ---
 
-## Preprocesado y limpieza
+## Initial Hypothesis
 
-- Eliminación de duplicados  
-- Eliminación de valores nulos  
-- Conversión de tipos  
-- Detección de outliers (solo significativos en `duration_ms`)  
+After inspecting the dataset columns, I formulated the following hypothesis:
 
-El dataset venía bastante limpio, con pocas anomalías relevantes.
+> "I will be able to identify the most popular artists, songs, and albums; find the most energetic, happy, longest and shortest songs; detect possible anomalies; and analyze whether some musical variables are related to each other."
 
 ---
 
-## Análisis Exploratorio (EDA)
+## Preprocessing and Data Cleaning
 
-Se realizaron:
+- Removal of duplicate records  
+- Removal of missing values  
+- Data type conversion  
+- Outlier detection (only significant in `duration_ms`)  
 
-- Histogramas por cada variable numérica  
-- Boxplot general comparando todas las variables numéricas  
-- Gráficos categóricos (variables booleanas)  
-- Matriz de correlación  
-- Scatterplots de las correlaciones más fuertes y más débiles  
+The dataset was already quite clean, with very few relevant anomalies.
 
 ---
 
-## Principales conclusiones
+## Exploratory Data Analysis (EDA)
 
-### Correlaciones relevantes  
-(> 0.5 o < -0.5 según criterio docente)
+The following analyses were performed:
 
-- Energy ↔ Loudness → correlación fuerte positiva (0.76)  
-- Acousticness ↔ Energy → correlación fuerte negativa (-0.73)  
-- Acousticness ↔ Loudness → correlación negativa (-0.58)  
-- Danceability ↔ Valence → correlación positiva moderada (0.49)  
+- Histograms for each numerical variable  
+- Global boxplot comparing all numerical variables  
+- Categorical plots (boolean variables)  
+- Correlation matrix  
+- Scatter plots for the strongest and weakest correlations  
 
-Estas relaciones encajan perfectamente con la lógica musical:
+---
 
-- Canciones energéticas tienden a sonar más fuerte.  
-- Canciones acústicas suelen ser más suaves y menos energéticas.  
+## Main Conclusions
+
+### Relevant Correlations  
+(Threshold > 0.5 or < -0.5 according to academic criteria)
+
+- Energy ↔ Loudness → strong positive correlation (0.76)  
+- Acousticness ↔ Energy → strong negative correlation (-0.73)  
+- Acousticness ↔ Loudness → negative correlation (-0.58)  
+- Danceability ↔ Valence → moderate positive correlation (0.49)  
+
+These relationships are fully consistent with musical logic:
+
+- Energetic songs tend to sound louder.  
+- Acoustic songs are usually softer and less energetic.  
 
 ---
 
 ### Outliers
 
-Solo aparecen outliers muy significativos en `duration`, probablemente debidos a podcasts o sesiones largas.
+Only very significant outliers appear in `duration`, most likely due to podcasts or long audio sessions.
 
 ---
 
-### Cumplimiento de la hipótesis
+### Hypothesis Validation
 
-He podido confirmar todos mis objetivos iniciales:
+All the initial objectives were successfully confirmed:
 
-- Identificación de canciones y artistas más populares  
-- Análisis de emociones (valence), energía, tempo y duración  
-- Detección de anomalías lógicas  
-- Estudio profundo de correlaciones entre características musicales  
+- Identification of the most popular songs and artists  
+- Analysis of emotions (valence), energy, tempo, and duration  
+- Detection of logical anomalies  
+- In-depth study of correlations between musical features  
 
 ---
 
-## Tecnologías utilizadas
+## Technologies Used
 
 - Python  
 - Pandas  
