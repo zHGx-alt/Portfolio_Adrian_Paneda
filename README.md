@@ -37,7 +37,7 @@ A complete exploratory analysis of a real dataset, including:
 * Insights and conclusions  
 
 * Technologies: Python, Pandas, NumPy, Matplotlib, Seaborn  
-* Repository: * Repository: [EDA Project](./EDA)
+* Repository: [EDA Project](./EDA)
 
 ---
 
@@ -51,7 +51,7 @@ A supervised Machine Learning project including:
 * Interpretation of results  
 
 * Technologies: Python, Scikit-learn, Pandas  
-* Repository: * Repository: [Machine Learning Project](./ML)
+* Repository: [Machine Learning Project](./ML)
 
 ***
 ## Ongoing and Future Projects
