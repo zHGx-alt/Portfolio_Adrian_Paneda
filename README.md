@@ -1,84 +1,102 @@
 # Portfolio — Adrián Pañeda
 
-Welcome to my portfolio.
-Here I collect the projects I develop while training in Data Science, Artificial Intelligence, and programming in Python.
+Welcome to my professional portfolio.
 
-My goal is to continue building real solutions that allow me to grow professionally and apply my knowledge to practical problems.
+This repository collects my main projects in **Data Science, Machine Learning, and Applied Artificial Intelligence**, developed during my training and bootcamps.
+
+My objective is to build solid, well-documented projects that demonstrate my ability to analyze data, build models, and solve real-world problems.
 
 ***
 ## About Me
 
-I am a student of Data Science and Business-Applied Artificial Intelligence, currently training in:
+I am a Data Science and Business-Applied Artificial Intelligence student, currently training in:
 
-* The Bridge — Bootcamp in Data Science and Generative AI (ongoing)
-* Racks Academy — AI applied to business (ongoing)
+* The Bridge — Bootcamp in Data Science and Generative AI  
+* Racks Academy — AI applied to business  
 
-I am particularly interested in:
+My main interests are:
 
-* Machine Learning
-* Data analysis and visualization
-* LLMs and generative AI
-* Automation with Python and n8n
+* Exploratory Data Analysis (EDA)
+* Supervised and unsupervised Machine Learning
+* Model evaluation and feature engineering
+* Generative AI and LLMs
+* Automation and data pipelines
 
-This portfolio reflects my progress and my learning in an honest, structured, and constantly evolving way.
-
-***
-## Featured Projects
-
-### 1. Battleship — Python Game
-
-Individual project
-
-A fully developed Python game that replicates the classic Battleship.
-This project allowed me to work on programming logic, modularity, and data structures.
-
-* Repository: (add the link here)
-* Technologies: Python (lists, conditionals, modules)
+This portfolio reflects my technical growth and my transition into professional-level data projects.
 
 ***
-## Upcoming Projects (In Progress)
+## Main Projects
 
-These projects will be available in the coming weeks as I progress in my training:
+### 1. Exploratory Data Analysis (EDA)
 
-* Exploratory Data Analysis (EDA) of real datasets
-* Supervised Machine Learning models
-* Final bootcamp project (with a company partner)
-* Automations with n8n + generative AI
-* Dashboards and interactive visualizations
+A complete exploratory analysis of a real dataset, including:
 
-Each project will have its own repository, detailed explanation, and clean code.
+* Data cleaning and preprocessing  
+* Univariate and multivariate analysis  
+* Data visualization  
+* Insights and conclusions  
+
+* Technologies: Python, Pandas, NumPy, Matplotlib, Seaborn  
+* Repository: (add your EDA repo link here)
+
+---
+
+### 2. Machine Learning Project
+
+A supervised Machine Learning project including:
+
+* Feature engineering  
+* Model training and validation  
+* Performance evaluation  
+* Interpretation of results  
+
+* Technologies: Python, Scikit-learn, Pandas  
+* Repository: (add your ML repo link here)
+
+***
+## Ongoing and Future Projects
+
+These projects are currently in progress and will be added soon:
+
+* Advanced EDA on multiple datasets  
+* Classification and regression models  
+* Final bootcamp project with a company partner  
+* Automations with n8n and Generative AI  
+* Interactive dashboards (Streamlit / Power BI)
+
+Each project will include clean code, documentation, and clear business-oriented conclusions.
 
 ***
 ## Technologies and Tools
 
-* Python
-* Pandas, NumPy
-* SQL
-* Jupyter Notebook
-* Git and GitHub
-* n8n
-* ChatGPT, Gemini, LLMs
-* Visual Studio Code
-* Docker
-* Flask
-* AWS
-* Data visualization
-* Scikit-learn
-* Streamlit
-* PySpark
+* Python  
+* Pandas, NumPy  
+* SQL  
+* Jupyter Notebook  
+* Scikit-learn  
+* Matplotlib, Seaborn  
+* Streamlit  
+* Git & GitHub  
+* Docker  
+* Flask  
+* AWS  
+* PySpark  
+* n8n  
+* LLMs and Generative AI  
 
 ***
 ## Contact
 
-If you want to get in touch, collaborate, or just explore, you can find me here:
+If you would like to get in touch or collaborate:
 
-* Email: adelafiguera180@gmail.com
-* LinkedIn: https://www.linkedin.com/in/adrian-paneda-de-la-figuera/
-* Location: Bilbao, Spain
+* Email: adelafiguera180@gmail.com  
+* LinkedIn: https://www.linkedin.com/in/adrián-pańeda-de-la-figuera-3ab721396/  
+* Location: Bilbao, Spain  
 
 ***
 ## Final Note
 
-This portfolio is actively under construction.
-I gradually add new projects, improvements, and learnings.
-Thank you for visiting my work.
+This portfolio is under active development.
+New projects and improvements are added regularly as I progress in my training.
+
+Thank you for visiting.
