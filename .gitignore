@@ -1,0 +1,24 @@
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Python cache ---
+__pycache__/
+*.pyc
+*.pyo
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Databases ---
+*.db
+*.sqlite
+
+# --- Ignore ONLY raw data folder ---
+ecommerce-analytics-project/data/
+**/data/
+
+# --- OS / Editor ---
+.DS_Store
+.vscode/
