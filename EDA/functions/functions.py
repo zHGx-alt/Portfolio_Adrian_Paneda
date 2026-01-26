@@ -3,17 +3,17 @@ import matplotlib.pyplot as plt
 
 def set_dark_theme():
     """
-    Activa el estilo oscuro elegante para todos los gráficos.
+    Enable an elegant dark style for all plots.
     """
     
     sns.set_theme(
         style="darkgrid",
         rc={
-            "figure.facecolor": "#1B1F30",   # fondo figura
-            "axes.facecolor": "#1B1F30",     # fondo ejes
+            "figure.facecolor": "#1B1F30",   
+            "axes.facecolor": "#1B1F30",     
             "axes.edgecolor": "#1B1F30",
             "savefig.facecolor": "#1B1F30",
-            "grid.color": "#2B314A",         # grid suave
+            "grid.color": "#2B314A",         
             "axes.labelcolor": "white",
             "xtick.color": "white",
             "ytick.color": "white",
@@ -23,4 +23,4 @@ def set_dark_theme():
         }
     )
 
-COLOR_VERDE = "#32E875"  # verde moderno
+COLOR_VERDE = "#32E875"  

@@ -1,93 +1,94 @@
-🎵 ANÁLISIS EXPLORATORIO DE DATOS (EDA) – Spotify Tracks Dataset
+# Exploratory Data Analysis (EDA) — Spotify Tracks Dataset
 
-🔹 Introducción
+## Introduction
 
-Este documento resume el proceso, desarrollo y conclusiones del análisis exploratorio realizado sobre un dataset musical de Spotify.
-El objetivo ha sido entender las características de las canciones, detectar patrones, estudiar relaciones entre variables y localizar posibles anomalías.
-El análisis se ha llevado a cabo en Jupyter Notebook usando Pandas, Matplotlib, Seaborn y Python.
+This document summarizes the process, development, and conclusions of an Exploratory Data Analysis performed on a musical dataset from Spotify.
 
-🎯 Hipótesis inicial
+The main objective of this analysis is to understand the characteristics of the songs, detect patterns, study relationships between variables, and identify potential anomalies.
 
-“Seré capaz de identificar artistas, canciones y álbumes destacados; encontrar canciones extremas (más enérgicas, acústicas, largas, cortas, alegres o tristes); detectar anomalías y analizar relaciones entre variables musicales.”
+The analysis was conducted in a Jupyter Notebook using Python, Pandas, Matplotlib, and Seaborn.
 
-🧹 Proceso de limpieza del dataset
+---
 
-Se eliminaron columnas irrelevantes: Unnamed: 0 y track_id.
+## Initial Hypothesis
 
-Se hallaron solo 3 nulos, eliminados por ser insignificantes.
+"I will be able to identify relevant artists, songs, and albums; find extreme songs (most energetic, acoustic, long, short, happy, or sad); detect anomalies; and analyze relationships between musical variables."
 
-Se identificaron duplicados usando track_name, artists y duration_ms.
-Se eliminaron con drop_duplicates(keep="first").
+---
 
-Los tipos de datos eran correctos y no necesitaron cambios.
+## Data Cleaning Process
 
-La única variable con outliers significativos fue duration_ms, debido a podcasts o sesiones largas.
+The following preprocessing steps were performed:
 
-📊 Análisis Exploratorio
+- Removal of irrelevant columns: `Unnamed: 0` and `track_id`.
+- Only 3 missing values were found and removed, as they were negligible.
+- Duplicates were identified using `track_name`, `artists`, and `duration_ms` and removed using `drop_duplicates(keep="first")`.
+- Data types were already correct and did not require conversion.
+- The only variable with significant outliers was `duration_ms`, mainly due to podcasts or long audio sessions.
 
-• Distribuciones univariantes
-Se generaron histogramas para todas las variables numéricas.
-La mayoría presentan distribuciones normales, excepto duración, con una cola muy larga.
+---
 
-• Boxplot general
-Permitió ver claramente que duration_ms es la única variable realmente atípica.
+## Exploratory Data Analysis
 
-• Variables categóricas
-Se analizaron los géneros más frecuentes y las variables booleanas.
+### Univariate Distributions
 
-• Correlaciones y relaciones entre variables
-Se creó una matriz de correlaciones y varios scatterplots.
-Relaciones más relevantes (≥0.5 o ≤–0.5):
+Histograms were generated for all numerical variables.  
+Most of them show approximately normal distributions, except for `duration_ms`, which presents a long right tail.
 
-Energy ↔ Loudness: +0.76
+### Global Boxplot
 
-Acousticness ↔ Energy: –0.73
+A global boxplot clearly shows that `duration_ms` is the only variable with strong outlier behavior.
 
-Acousticness ↔ Loudness: –0.58
+### Categorical Variables
 
-Danceability ↔ Valence: +0.49
+The most frequent genres and boolean variables were analyzed.
 
-Estas correlaciones son coherentes con la lógica musical.
+### Correlations and Relationships Between Variables
 
-• Identificación de extremos
-Se buscaron canciones más rápidas, lentas, enérgicas, acústicas, populares, etc.
+A correlation matrix and several scatter plots were created.  
+The most relevant relationships (≥ 0.5 or ≤ –0.5) are:
 
-📈 Conclusiones
+- Energy ↔ Loudness: +0.76  
+- Acousticness ↔ Energy: –0.73  
+- Acousticness ↔ Loudness: –0.58  
+- Danceability ↔ Valence: +0.49  
 
-El dataset venía bastante limpio.
+These correlations are fully consistent with musical logic.
 
-Las correlaciones encontradas son fuertes y consistentes.
+### Identification of Extreme Values
 
-Solo una variable presenta outliers importantes.
+The analysis identified the fastest, slowest, most energetic, most acoustic, and most popular songs in the dataset.
 
-La hipótesis inicial se cumple totalmente: se han identificado patrones, extremos musicales y relaciones significativas entre características de las canciones.
+---
 
-🛠 Tecnologías utilizadas
+## Conclusions
 
-Python · Pandas · NumPy · Matplotlib · Seaborn · Jupyter Notebook
+- The dataset was already relatively clean.
+- The detected correlations are strong and consistent.
+- Only one variable presents significant outliers.
+- The initial hypothesis is fully confirmed: clear patterns, musical extremes, and meaningful relationships between features were identified.
 
-📦 Estructura recomendada del proyecto
+---
 
+## Technologies Used
+
+- Python  
+- Pandas  
+- NumPy  
+- Matplotlib  
+- Seaborn  
+- Jupyter Notebook  
+
+---
+
+## Recommended Project Structure
+
+```text
 project/
 │── data/
 │── notebook/
 │   └── EDA.ipynb
 │── outputs/
 │   ├── figures/
-│   └── tablas/
+│   └── tables/
 └── README.md
-
-
-📚 Posibles extensiones futuras
-
-Modelos predictivos (popularidad, valencia, energía…).
-
-Recomendador musical.
-
-Análisis segmentado por géneros o artistas.
-
-Clustering para agrupar canciones similares.
-
-🏁 Cierre
-
-El EDA ofrece una visión completa del dataset musical y sienta las bases para análisis avanzados o futuros proyectos de machine learning.
