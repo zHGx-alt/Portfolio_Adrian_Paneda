@@ -1,11 +1,4 @@
 # 💫 About Me:
-This repository contains my main **Data Science, Machine Learning, and Applied AI projects**, focused on real-world data problems, clean analysis, and well-documented solutions.
-
-The goal of this portfolio is to demonstrate my ability to **analyze data, build models, and translate results into actionable insights**.
-
----
-
-## About Me
 
 I am a Data Analyst / Data Science profile currently specializing in **data analysis, machine learning, and applied artificial intelligence**.
 
