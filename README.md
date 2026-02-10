@@ -1,5 +1,87 @@
 # 💫 About Me:
-Junior Data Analyst with a strong foundation in Python, SQL, and applied machine learning.<br>Focused on turning data into clear insights through clean analysis and well-structured solutions.
+This repository contains my main **Data Science, Machine Learning, and Applied AI projects**, focused on real-world data problems, clean analysis, and well-documented solutions.
+
+The goal of this portfolio is to demonstrate my ability to **analyze data, build models, and translate results into actionable insights**.
+
+---
+
+## About Me
+
+I am a Data Analyst / Data Science profile currently specializing in **data analysis, machine learning, and applied artificial intelligence**.
+
+My work focuses on:
+- Structuring and cleaning complex datasets
+- Exploring data to extract meaningful insights
+- Building and evaluating predictive models
+- Applying AI and automation to practical business problems
+
+This repository reflects my progression from foundational analysis to more advanced, production-oriented projects.
+
+---
+
+## Main Projects
+
+### 1. Exploratory Data Analysis (EDA)
+
+End-to-end exploratory analysis of real datasets, including:
+- Data cleaning and preprocessing  
+- Univariate and multivariate analysis  
+- Visual exploration  
+- Insight generation and conclusions  
+
+**Technologies:** Python, Pandas, NumPy, Matplotlib, Seaborn  
+📂 **Repository:** [`EDA`](./EDA)
+
+---
+
+### 2. Machine Learning
+
+Supervised machine learning projects covering:
+- Feature engineering  
+- Model training and validation  
+- Performance evaluation  
+- Result interpretation  
+
+**Technologies:** Python, Scikit-learn, Pandas  
+📂 **Repository:** [`ML`](./ML)
+
+---
+
+## Ongoing & Upcoming Projects
+
+Currently working on:
+- Advanced EDA across multiple datasets  
+- Classification and regression models  
+- End-to-end ML pipelines  
+- Automations with n8n and Generative AI  
+- Interactive dashboards (Streamlit / Power BI)
+
+Each project is developed with a focus on **clean code, reproducibility, and business relevance**.
+
+---
+
+## Technologies & Tools
+
+Python · Pandas · NumPy · SQL · Scikit-learn  
+Matplotlib · Seaborn · Streamlit  
+Git · GitHub · Docker · Flask  
+AWS · PySpark · n8n · Generative AI / LLMs  
+
+---
+
+## Contact
+
+📍 Bilbao, Spain  
+📧 Email: adelafiguera180@gmail.com  
+💼 LinkedIn: https://www.linkedin.com/in/adrian-paneda-de-la-figuera/
+
+---
+
+## Notes
+
+This portfolio is under active development.  
+New projects and improvements are added continuously.
+
 
 
 ## 🌐 Socials:
@@ -11,9 +93,6 @@ Junior Data Analyst with a strong foundation in Python, SQL, and applied machine
 ![](https://github-readme-stats.vercel.app/api?username=zHGx-alt&theme=shadow_blue&hide_border=true&include_all_commits=false&count_private=false)<br/>
 ![](https://nirzak-streak-stats.vercel.app/?user=zHGx-alt&theme=shadow_blue&hide_border=true)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=zHGx-alt&theme=shadow_blue&hide_border=true&include_all_commits=false&count_private=false&layout=compact)
-
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=zHGx-alt&theme=radical&no-frame=false&no-bg=true&margin-w=4)
 
 ### ✍️ Random Dev Quote
 ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
