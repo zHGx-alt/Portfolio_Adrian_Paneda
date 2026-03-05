@@ -11,10 +11,6 @@ __pycache__/
 # --- Jupyter ---
 .ipynb_checkpoints/
 
-# --- Databases ---
-*.db
-*.sqlite
-
 # --- Ignore ONLY raw data folder ---
 ecommerce-analytics-project/data/
 **/data/
