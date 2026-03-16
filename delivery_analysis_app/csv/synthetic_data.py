@@ -8,7 +8,7 @@ NUM_RESTAURANTS = 50
 NUM_RIDERS = 120
 NUM_ORDERS = 10000
 
-ZONES = ["CENTRO", "NORTE", "SUR", "EAST", "WEST"]
+ZONES = ["CENTER", "NORTH", "SOUTH", "EAST", "WEST"]
 CUISINES = {
     "ITALIAN": (15, 25),
     "BURGER": (10, 18),
@@ -25,7 +25,7 @@ END_DATE = datetime(2026, 1, 31, 23, 59, 59)
 
 
 def random_datetime_weighted(start, end):
-    """Genera más pedidos en horas punta."""
+    """Generate more orders during peak hours."""
     while True:
         total_seconds = int((end - start).total_seconds())
         dt = start + timedelta(seconds=random.randint(0, total_seconds))
@@ -67,7 +67,7 @@ def build_riders():
             "rider_id": i,
             "rider_name": f"RIDER_{i}",
             "home_zone": random.choice(ZONES),
-            "vehicle_type": random.choice(["BIKE", "MOTO"]),
+            "vehicle_type": random.choice(["BIKE", "MOTORBIKE"]),
             "max_orders_per_hour": random.randint(2, 5),
         })
     return riders
