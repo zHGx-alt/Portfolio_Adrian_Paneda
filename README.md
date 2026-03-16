@@ -15,26 +15,51 @@ This portfolio collects my projects across data exploration, model development, 
 ## Main Projects
 
 ### 📌 Crypto Price Movement Prediction
-A project that analyzes crypto market data to predict price movements using statistical features and machine learning models.
+Predicts short-term crypto price movements using engineered features and time-series-aware modeling.
 
-**Tech stack:** Python, Pandas, Scikit-learn, Time-series analysis, Visualization
-📂 **Location:** `crypto_price_movement_prediction/`
+Key highlights:
+- End-to-end notebook workflow (data ingestion → feature engineering → model training → evaluation)
+- Temporal validation using `TimeSeriesSplit` and performance analysis (ROC AUC, confusion matrix)
+- Models included: Logistic Regression, Random Forest, XGBoost (with Optuna tuning)
+
+📁 **Where to look:** `crypto_price_movement_prediction/README.md` (project overview)
 
 ---
 
 ### 📌 E-commerce Analytics
-Data cleaning and analysis of e-commerce events, with insights on user behavior, product performance, and key metrics.
+End-to-end analytics pipeline for e-commerce event data (view/cart/purchase) with SQL integration and dashboarding.
 
-**Tech stack:** Python, Pandas, SQLite, Data visualization
-📂 **Location:** `ecommerce-analytics-project/`
+Key highlights:
+- Data filtering + sample generation (to work with a manageable subset)
+- Cleaning & transformation scripts (Pandas)
+- SQLite schema + SQL analysis notebooks
+- Power BI dashboard template for sharing insights
+
+📁 **Where to look:** `ecommerce-analytics-project/README.md` (detailed walkthrough)
 
 ---
 
 ### 📌 Spotify Data Analysis
-Exploratory analysis and reporting on Spotify listening data, including trends, user behavior, and playlist insights.
+Exploratory data analysis of Spotify track-level data to identify patterns in audio features and popularity.
 
-**Tech stack:** Python, Pandas, Matplotlib/Seaborn, Jupyter Notebooks
-📂 **Location:** `spotify_data_analysis/`
+Key highlights:
+- Data cleaning and outlier analysis
+- Correlation matrix & feature relationships (energy, loudness, acousticness, valence)
+- Visual storytelling with plots and derived insights
+
+📁 **Where to look:** `spotify_data_analysis/README.md` (full EDA summary)
+
+---
+
+## How to Use This Portfolio
+
+Each project folder contains a dedicated `README.md` with:
+- Project goals and questions addressed
+- Data sources and preprocessing steps
+- How to run notebooks/scripts locally
+- Key results and next steps
+
+For a quick start, open the folder you're interested in and follow the setup instructions inside.
 
 ---
 
