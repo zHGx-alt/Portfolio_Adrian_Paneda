@@ -1,64 +1,47 @@
 # 💫 About Me:
 
-I am a Data Analyst / Data Science profile currently specializing in **data analysis, machine learning, and applied artificial intelligence**.
+I am a Data Analyst / Data Science professional focusing on **data analysis, predictive modeling, and actionable insights**.
 
-My work focuses on:
+My work centers on:
 - Structuring and cleaning complex datasets
-- Exploring data to extract meaningful insights
-- Building and evaluating predictive models
-- Applying AI and automation to practical business problems
+- Exploring data for meaningful patterns and storytelling
+- Building and validating predictive models
+- Delivering results with reproducible code and clear visualizations
 
-This repository reflects my progression from foundational analysis to more advanced, production-oriented projects.
+This portfolio collects my projects across data exploration, model development, and analytics automation.
 
 ---
 
 ## Main Projects
 
-### 1. Exploratory Data Analysis (EDA)
+### 📌 Crypto Price Movement Prediction
+A project that analyzes crypto market data to predict price movements using statistical features and machine learning models.
 
-End-to-end exploratory analysis of real datasets, including:
-- Data cleaning and preprocessing  
-- Univariate and multivariate analysis  
-- Visual exploration  
-- Insight generation and conclusions  
-
-**Technologies:** Python, Pandas, NumPy, Matplotlib, Seaborn  
-📂 **Repository:** [`EDA`](./EDA)
+**Tech stack:** Python, Pandas, Scikit-learn, Time-series analysis, Visualization
+📂 **Location:** `crypto_price_movement_prediction/`
 
 ---
 
-### 2. Machine Learning
+### 📌 E-commerce Analytics
+Data cleaning and analysis of e-commerce events, with insights on user behavior, product performance, and key metrics.
 
-Supervised machine learning projects covering:
-- Feature engineering  
-- Model training and validation  
-- Performance evaluation  
-- Result interpretation  
-
-**Technologies:** Python, Scikit-learn, Pandas  
-📂 **Repository:** [`ML`](./ML)
+**Tech stack:** Python, Pandas, SQLite, Data visualization
+📂 **Location:** `ecommerce-analytics-project/`
 
 ---
 
-## Ongoing & Upcoming Projects
+### 📌 Spotify Data Analysis
+Exploratory analysis and reporting on Spotify listening data, including trends, user behavior, and playlist insights.
 
-Currently working on:
-- Advanced EDA across multiple datasets  
-- Classification and regression models  
-- End-to-end ML pipelines  
-- Automations with n8n and Generative AI  
-- Interactive dashboards (Streamlit / Power BI)
-
-Each project is developed with a focus on **clean code, reproducibility, and business relevance**.
+**Tech stack:** Python, Pandas, Matplotlib/Seaborn, Jupyter Notebooks
+📂 **Location:** `spotify_data_analysis/`
 
 ---
 
 ## Technologies & Tools
-
 Python · Pandas · NumPy · SQL · Scikit-learn  
-Matplotlib · Seaborn · Streamlit  
-Git · GitHub · Docker · Flask  
-AWS · PySpark · n8n · Generative AI / LLMs  
+Matplotlib · Seaborn · Plotly · Jupyter  
+Git · GitHub · Docker · SQLite  
 
 ---
 
