@@ -1,289 +1,138 @@
 BEGIN;
 
--- =========================
--- 0) DEV reset (reproducible)
--- =========================
-TRUNCATE TABLE
-  events,
-  orders,
-  riders,
-  restaurants,
-  order_categories,
-  event_types,
-  weather_levels,
-  traffic_levels,
-  delay_reasons
-RESTART IDENTITY CASCADE;
+-- =====================================
+-- LIMPIEZA
+-- =====================================
+DELETE FROM order_events;
+DELETE FROM deliveries;
+DELETE FROM orders;
+DELETE FROM riders;
+DELETE FROM restaurants;
 
--- =========================
--- 1) Catalogs
--- =========================
-INSERT INTO event_types (event_name) VALUES
-  ('CREATED'),
-  ('ACCEPTED'),
-  ('PREPARING'),
-  ('READY'),
-  ('PICKED_UP'),
-  ('DELIVERED'),
-  ('CANCELLED')
-ON CONFLICT (event_name) DO NOTHING;
+-- =====================================
+-- RESTAURANTS
+-- =====================================
+INSERT INTO restaurants (
+  restaurant_id,
+  restaurant_name,
+  cuisine_category,
+  base_prep_time,
+  capacity,
+  restaurant_zone,
+  restaurant_lat,
+  restaurant_lon
+) VALUES
+  (1, 'Napoli Pizza Lab', 'ITALIAN', 15, 20, 'CENTRO', 43.2630, -2.9350),
+  (2, 'Sakura Sushi', 'JAPANESE', 20, 15, 'NORTE', 43.2710, -2.9520),
+  (3, 'Burger Station', 'AMERICAN', 12, 18, 'SUR', 43.2580, -2.9260),
+  (4, 'Bombay Corner', 'INDIAN', 18, 16, 'CENTRO', 43.2620, -2.9490),
+  (5, 'Green Bowl', 'HEALTHY', 10, 14, 'EAST', 43.2610, -2.9310);
 
-INSERT INTO weather_levels (weather_name) VALUES
-  ('CLEAR'),
-  ('RAIN'),
-  ('WIND'),
-  ('STORM'),
-  ('HEAT')
-ON CONFLICT (weather_name) DO NOTHING;
+-- =====================================
+-- RIDERS
+-- =====================================
+INSERT INTO riders (
+  rider_id,
+  rider_name,
+  home_zone,
+  vehicle_type,
+  max_orders_per_hour
+) VALUES
+  (1, 'Alex Ruiz', 'CENTRO', 'BIKE', 3),
+  (2, 'Marta Lopez', 'NORTE', 'MOTORBIKE', 5),
+  (3, 'Jon Etxeberria', 'SUR', 'BIKE', 3),
+  (4, 'Carlos Vega', 'EAST', 'MOTORBIKE', 6),
+  (5, 'Iker Bilbao', 'CENTRO', 'BIKE', 4);
 
-INSERT INTO traffic_levels (traffic_name) VALUES
-  ('LOW'),
-  ('MEDIUM'),
-  ('HIGH')
-ON CONFLICT (traffic_name) DO NOTHING;
+-- =====================================
+-- ORDERS
+-- =====================================
+INSERT INTO orders (
+  order_id,
+  created_at,
+  order_value,
+  items_count,
+  estimated_prep_time,
+  estimated_delivery_time,
+  customer_lat,
+  customer_lon,
+  order_status,
+  restaurant_id,
+  weather_level,
+  traffic_level
+) VALUES
+  (1, '2026-01-10 13:05:00', 22.50, 3, 15, 20, 43.2620, -2.9340, 'DELIVERED', 1, 'CLEAR', 'MEDIUM'),
+  (2, '2026-01-10 14:10:00', 35.00, 5, 20, 25, 43.2700, -2.9500, 'DELIVERED', 2, 'RAIN', 'HIGH'),
+  (3, '2026-01-11 20:15:00', 18.75, 2, 12, 18, 43.2585, -2.9280, 'DELIVERED', 3, 'CLEAR', 'LOW'),
+  (4, '2026-01-11 21:30:00', 40.20, 6, 18, 30, 43.2635, -2.9480, 'DELIVERED', 4, 'WIND', 'MEDIUM'),
+  (5, '2026-01-12 12:45:00', 15.00, 2, 10, 15, 43.2600, -2.9320, 'CANCELLED', 5, 'RAIN', 'HIGH');
 
-INSERT INTO delay_reasons (delay_reason_name) VALUES
-  ('RESTAURANT_BUSY'),
-  ('KITCHEN_DELAY'),
-  ('RIDER_DELAY'),
-  ('TRAFFIC'),
-  ('WEATHER'),
-  ('ADDRESS_ISSUE')
-ON CONFLICT (delay_reason_name) DO NOTHING;
+-- =====================================
+-- DELIVERIES
+-- SOLO PARA PEDIDOS ENTREGADOS
+-- =====================================
+INSERT INTO deliveries (
+  delivery_id,
+  order_id,
+  rider_id,
+  assigned_at,
+  picked_up_at,
+  delivered_at,
+  hour,
+  day,
+  month,
+  prep_minutes,
+  delivery_minutes,
+  total_minutes
+) VALUES
+  (1, 1, 1, '2026-01-10 13:07:00', '2026-01-10 13:22:00', '2026-01-10 13:42:00', 13, 'Saturday', 1, 15.00, 20.00, 35.00),
+  (2, 2, 2, '2026-01-10 14:12:00', '2026-01-10 14:35:00', '2026-01-10 15:05:00', 14, 'Saturday', 1, 23.00, 30.00, 53.00),
+  (3, 3, 3, '2026-01-11 20:17:00', '2026-01-11 20:29:00', '2026-01-11 20:48:00', 20, 'Sunday', 1, 12.00, 19.00, 31.00),
+  (4, 4, 4, '2026-01-11 21:32:00', '2026-01-11 21:55:00', '2026-01-11 22:30:00', 21, 'Sunday', 1, 23.00, 35.00, 58.00);
 
--- =========================
--- 2) Master data
--- =========================
-INSERT INTO restaurants
-  (restaurant_name, cuisine_category, base_prep_time, capacity, restaurant_lat, restaurant_lon, restaurant_zone)
-VALUES
-  ('Napoli Pizza Lab', 'ITALIAN',  15, 20, 43.2630, -2.9350, 'BILBAO_CENTRO'),
-  ('Sakura Sushi',     'JAPANESE', 20, 15, 43.2710, -2.9520, 'DEUSTO'),
-  ('Burger Station',   'AMERICAN', 12, 18, 43.2580, -2.9260, 'SANTUTXU'),
-  ('Bombay Corner',    'INDIAN',   18, 16, 43.2620, -2.9490, 'INDAUTXU'),
-  ('Green Bowl',       'HEALTHY',  10, 14, 43.2610, -2.9310, 'BILBAO_CENTRO');
+-- =====================================
+-- ORDER EVENTS
+-- =====================================
+INSERT INTO order_events (
+  event_id,
+  order_id,
+  event_name,
+  event_timestamp
+) VALUES
+  -- ORDER 1
+  (1, 1, 'CREATED',   '2026-01-10 13:05:00'),
+  (2, 1, 'ACCEPTED',  '2026-01-10 13:06:00'),
+  (3, 1, 'PREPARING', '2026-01-10 13:07:00'),
+  (4, 1, 'READY',     '2026-01-10 13:20:00'),
+  (5, 1, 'PICKED_UP', '2026-01-10 13:22:00'),
+  (6, 1, 'DELIVERED', '2026-01-10 13:42:00'),
 
-INSERT INTO riders (home_zone, avg_pickup_time, avg_delivery_time) VALUES
-  ('BILBAO_CENTRO', 6.50, 14.00),
-  ('DEUSTO',        7.20, 13.50),
-  ('SANTUTXU',      8.00, 15.20),
-  ('INDAUTXU',      6.80, 12.80);
+  -- ORDER 2
+  (7, 2, 'CREATED',   '2026-01-10 14:10:00'),
+  (8, 2, 'ACCEPTED',  '2026-01-10 14:11:00'),
+  (9, 2, 'PREPARING', '2026-01-10 14:12:00'),
+  (10, 2, 'READY',    '2026-01-10 14:33:00'),
+  (11, 2, 'PICKED_UP','2026-01-10 14:35:00'),
+  (12, 2, 'DELIVERED','2026-01-10 15:05:00'),
 
--- OJO: complexity_factor es NOT NULL en tu schema
-INSERT INTO order_categories (category_name, complexity_factor) VALUES
-  ('PIZZA',     1.150),
-  ('SUSHI',     1.350),
-  ('FAST_FOOD', 1.050),
-  ('INDIAN',    1.200),
-  ('HEALTHY',   1.000)
-ON CONFLICT (category_name) DO NOTHING;
+  -- ORDER 3
+  (13, 3, 'CREATED',   '2026-01-11 20:15:00'),
+  (14, 3, 'ACCEPTED',  '2026-01-11 20:16:00'),
+  (15, 3, 'PREPARING', '2026-01-11 20:17:00'),
+  (16, 3, 'READY',     '2026-01-11 20:27:00'),
+  (17, 3, 'PICKED_UP', '2026-01-11 20:29:00'),
+  (18, 3, 'DELIVERED', '2026-01-11 20:48:00'),
 
--- =========================
--- 3) Orders + events
--- =========================
-WITH
-et AS (SELECT event_name, event_type_id::int AS event_type_id FROM event_types),
-wx AS (SELECT weather_name, weather_id::int AS weather_id FROM weather_levels),
-tr AS (SELECT traffic_name, traffic_id::int AS traffic_id FROM traffic_levels),
-dr AS (SELECT delay_reason_name, delay_reason_id::int AS delay_reason_id FROM delay_reasons),
-rest AS (
-  SELECT restaurant_id, restaurant_name
-  FROM restaurants
-  WHERE restaurant_name IN ('Napoli Pizza Lab','Sakura Sushi','Burger Station','Bombay Corner','Green Bowl')
-),
-cat AS (
-  SELECT category_id, category_name
-  FROM order_categories
-  WHERE category_name IN ('PIZZA','SUSHI','FAST_FOOD','INDIAN','HEALTHY')
-),
-rid AS (SELECT rider_id::int AS rider_id FROM riders ORDER BY rider_id),
+  -- ORDER 4
+  (19, 4, 'CREATED',   '2026-01-11 21:30:00'),
+  (20, 4, 'ACCEPTED',  '2026-01-11 21:31:00'),
+  (21, 4, 'PREPARING', '2026-01-11 21:32:00'),
+  (22, 4, 'READY',     '2026-01-11 21:53:00'),
+  (23, 4, 'PICKED_UP', '2026-01-11 21:55:00'),
+  (24, 4, 'DELIVERED', '2026-01-11 22:30:00'),
 
--- ========== Orders ==========
-o1 AS (
-  INSERT INTO orders (
-    created_at, order_value, items_count, estimated_prep_time, estimated_delivery_time,
-    customer_lat, customer_lon, order_status, restaurant_id, category_id
-  )
-  SELECT
-    now() - interval '55 minutes',
-    18.90, 2, 15, 30,
-    43.2652, -2.9341,
-    'DELIVERED',
-    r.restaurant_id,
-    c.category_id
-  FROM rest r
-  JOIN cat c ON c.category_name = 'PIZZA'
-  WHERE r.restaurant_name = 'Napoli Pizza Lab'
-  RETURNING order_id, created_at
-),
-o2 AS (
-  INSERT INTO orders (
-    created_at, order_value, items_count, estimated_prep_time, estimated_delivery_time,
-    customer_lat, customer_lon, order_status, restaurant_id, category_id
-  )
-  SELECT
-    now() - interval '40 minutes',
-    24.50, 3, 20, 35,
-    43.2718, -2.9510,
-    'CANCELLED',
-    r.restaurant_id,
-    c.category_id
-  FROM rest r
-  JOIN cat c ON c.category_name = 'SUSHI'
-  WHERE r.restaurant_name = 'Sakura Sushi'
-  RETURNING order_id, created_at
-),
-o3 AS (
-  INSERT INTO orders (
-    created_at, order_value, items_count, estimated_prep_time, estimated_delivery_time,
-    customer_lat, customer_lon, order_status, restaurant_id, category_id
-  )
-  SELECT
-    now() - interval '25 minutes',
-    13.20, 1, 12, 25,
-    43.2585, -2.9258,
-    'READY',
-    r.restaurant_id,
-    c.category_id
-  FROM rest r
-  JOIN cat c ON c.category_name = 'FAST_FOOD'
-  WHERE r.restaurant_name = 'Burger Station'
-  RETURNING order_id, created_at
-),
-o4 AS (
-  INSERT INTO orders (
-    created_at, order_value, items_count, estimated_prep_time, estimated_delivery_time,
-    customer_lat, customer_lon, order_status, restaurant_id, category_id
-  )
-  SELECT
-    now() - interval '30 minutes',
-    29.70, 4, 18, 40,
-    43.2628, -2.9488,
-    'PICKED_UP',
-    r.restaurant_id,
-    c.category_id
-  FROM rest r
-  JOIN cat c ON c.category_name = 'INDIAN'
-  WHERE r.restaurant_name = 'Bombay Corner'
-  RETURNING order_id, created_at
-),
-o5 AS (
-  INSERT INTO orders (
-    created_at, order_value, items_count, estimated_prep_time, estimated_delivery_time,
-    customer_lat, customer_lon, order_status, restaurant_id, category_id
-  )
-  SELECT
-    now() - interval '7 minutes',
-    11.50, 2, 10, 20,
-    43.2609, -2.9314,
-    'CREATED',
-    r.restaurant_id,
-    c.category_id
-  FROM rest r
-  JOIN cat c ON c.category_name = 'HEALTHY'
-  WHERE r.restaurant_name = 'Green Bowl'
-  RETURNING order_id, created_at
-),
-
--- Riders deterministas para cada pedido (1..4..)
-r1 AS (SELECT (SELECT rider_id FROM rid OFFSET 0 LIMIT 1) AS rider_id),
-r2 AS (SELECT (SELECT rider_id FROM rid OFFSET 1 LIMIT 1) AS rider_id),
-r3 AS (SELECT (SELECT rider_id FROM rid OFFSET 2 LIMIT 1) AS rider_id),
-r4 AS (SELECT (SELECT rider_id FROM rid OFFSET 3 LIMIT 1) AS rider_id)
-
--- ========== Events ==========
-INSERT INTO events (ts, order_id, event_type_id, rider_id, weather_id, traffic_id, delay_reason_id)
-
--- o1 DELIVERED: 6 eventos
-SELECT o1.created_at + interval '0 min',  o1.order_id, (SELECT event_type_id FROM et WHERE event_name='CREATED'),
-       NULL::int, (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='MEDIUM'), NULL::int
-FROM o1
-UNION ALL
-SELECT o1.created_at + interval '2 min',  o1.order_id, (SELECT event_type_id FROM et WHERE event_name='ACCEPTED'),
-       (SELECT rider_id FROM r1), (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='MEDIUM'), NULL::int
-FROM o1
-UNION ALL
-SELECT o1.created_at + interval '6 min',  o1.order_id, (SELECT event_type_id FROM et WHERE event_name='PREPARING'),
-       (SELECT rider_id FROM r1), (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='MEDIUM'),
-       (SELECT delay_reason_id FROM dr WHERE delay_reason_name='KITCHEN_DELAY')
-FROM o1
-UNION ALL
-SELECT o1.created_at + interval '14 min', o1.order_id, (SELECT event_type_id FROM et WHERE event_name='READY'),
-       (SELECT rider_id FROM r1), (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='HIGH'), NULL::int
-FROM o1
-UNION ALL
-SELECT o1.created_at + interval '18 min', o1.order_id, (SELECT event_type_id FROM et WHERE event_name='PICKED_UP'),
-       (SELECT rider_id FROM r1), (SELECT weather_id FROM wx WHERE weather_name='RAIN'), (SELECT traffic_id FROM tr WHERE traffic_name='HIGH'),
-       (SELECT delay_reason_id FROM dr WHERE delay_reason_name='TRAFFIC')
-FROM o1
-UNION ALL
-SELECT o1.created_at + interval '30 min', o1.order_id, (SELECT event_type_id FROM et WHERE event_name='DELIVERED'),
-       (SELECT rider_id FROM r1), (SELECT weather_id FROM wx WHERE weather_name='RAIN'), (SELECT traffic_id FROM tr WHERE traffic_name='HIGH'), NULL::int
-FROM o1
-
--- o2 CANCELLED: 3 eventos
-UNION ALL
-SELECT o2.created_at + interval '0 min',  o2.order_id, (SELECT event_type_id FROM et WHERE event_name='CREATED'),
-       NULL::int, (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='LOW'), NULL::int
-FROM o2
-UNION ALL
-SELECT o2.created_at + interval '2 min',  o2.order_id, (SELECT event_type_id FROM et WHERE event_name='ACCEPTED'),
-       (SELECT rider_id FROM r2), (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='MEDIUM'), NULL::int
-FROM o2
-UNION ALL
-SELECT o2.created_at + interval '10 min', o2.order_id, (SELECT event_type_id FROM et WHERE event_name='CANCELLED'),
-       NULL::int, (SELECT weather_id FROM wx WHERE weather_name='RAIN'), (SELECT traffic_id FROM tr WHERE traffic_name='HIGH'),
-       (SELECT delay_reason_id FROM dr WHERE delay_reason_name='RESTAURANT_BUSY')
-FROM o2
-
--- o3 READY: 4 eventos
-UNION ALL
-SELECT o3.created_at + interval '0 min',  o3.order_id, (SELECT event_type_id FROM et WHERE event_name='CREATED'),
-       NULL::int, (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='LOW'), NULL::int
-FROM o3
-UNION ALL
-SELECT o3.created_at + interval '2 min',  o3.order_id, (SELECT event_type_id FROM et WHERE event_name='ACCEPTED'),
-       (SELECT rider_id FROM r3), (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='MEDIUM'), NULL::int
-FROM o3
-UNION ALL
-SELECT o3.created_at + interval '6 min',  o3.order_id, (SELECT event_type_id FROM et WHERE event_name='PREPARING'),
-       (SELECT rider_id FROM r3), (SELECT weather_id FROM wx WHERE weather_name='HEAT'), (SELECT traffic_id FROM tr WHERE traffic_name='MEDIUM'), NULL::int
-FROM o3
-UNION ALL
-SELECT o3.created_at + interval '14 min', o3.order_id, (SELECT event_type_id FROM et WHERE event_name='READY'),
-       (SELECT rider_id FROM r3), (SELECT weather_id FROM wx WHERE weather_name='HEAT'), (SELECT traffic_id FROM tr WHERE traffic_name='HIGH'),
-       (SELECT delay_reason_id FROM dr WHERE delay_reason_name='RESTAURANT_BUSY')
-FROM o3
-
--- o4 PICKED_UP: 5 eventos
-UNION ALL
-SELECT o4.created_at + interval '0 min',  o4.order_id, (SELECT event_type_id FROM et WHERE event_name='CREATED'),
-       NULL::int, (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='LOW'), NULL::int
-FROM o4
-UNION ALL
-SELECT o4.created_at + interval '2 min',  o4.order_id, (SELECT event_type_id FROM et WHERE event_name='ACCEPTED'),
-       (SELECT rider_id FROM r4), (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='MEDIUM'), NULL::int
-FROM o4
-UNION ALL
-SELECT o4.created_at + interval '6 min',  o4.order_id, (SELECT event_type_id FROM et WHERE event_name='PREPARING'),
-       (SELECT rider_id FROM r4), (SELECT weather_id FROM wx WHERE weather_name='RAIN'), (SELECT traffic_id FROM tr WHERE traffic_name='MEDIUM'),
-       (SELECT delay_reason_id FROM dr WHERE delay_reason_name='KITCHEN_DELAY')
-FROM o4
-UNION ALL
-SELECT o4.created_at + interval '14 min', o4.order_id, (SELECT event_type_id FROM et WHERE event_name='READY'),
-       (SELECT rider_id FROM r4), (SELECT weather_id FROM wx WHERE weather_name='RAIN'), (SELECT traffic_id FROM tr WHERE traffic_name='HIGH'), NULL::int
-FROM o4
-UNION ALL
-SELECT o4.created_at + interval '18 min', o4.order_id, (SELECT event_type_id FROM et WHERE event_name='PICKED_UP'),
-       (SELECT rider_id FROM r4), (SELECT weather_id FROM wx WHERE weather_name='RAIN'), (SELECT traffic_id FROM tr WHERE traffic_name='HIGH'),
-       (SELECT delay_reason_id FROM dr WHERE delay_reason_name='TRAFFIC')
-FROM o4
-
--- o5 CREATED: 1 evento
-UNION ALL
-SELECT o5.created_at + interval '0 min',  o5.order_id, (SELECT event_type_id FROM et WHERE event_name='CREATED'),
-       NULL::int, (SELECT weather_id FROM wx WHERE weather_name='CLEAR'), (SELECT traffic_id FROM tr WHERE traffic_name='LOW'), NULL::int
-FROM o5
-;
+  -- ORDER 5
+  (25, 5, 'CREATED',   '2026-01-12 12:45:00'),
+  (26, 5, 'CANCELLED', '2026-01-12 12:50:00');
 
 COMMIT;

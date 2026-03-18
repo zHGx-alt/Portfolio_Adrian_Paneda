@@ -2,7 +2,7 @@
 -- 1. Average delivery time
 -- =====================================
 SELECT
-    AVG(delivery_time) AS avg_delivery_time
+    ROUND(AVG(EXTRACT(EPOCH FROM delivery_time)/60.0)::numeric, 2) AS avg_delivery_time_min
 FROM delivery_duration;
 
 
@@ -10,20 +10,21 @@ FROM delivery_duration;
 -- 2. Delivery time by restaurant
 -- =====================================
 SELECT
+    r.restaurant_id,
     r.restaurant_name,
-    AVG(delivery_time) AS avg_delivery_time
+    ROUND(AVG(EXTRACT(EPOCH FROM d.delivery_time)/60.0)::numeric, 2) AS avg_delivery_time_min
 FROM delivery_duration d
 JOIN orders o USING(order_id)
 JOIN restaurants r USING(restaurant_id)
-GROUP BY r.restaurant_name
-ORDER BY avg_delivery_time;
+GROUP BY r.restaurant_id, r.restaurant_name
+ORDER BY avg_delivery_time_min;
 
 
 -- =====================================
 -- 3. Average preparation time
 -- =====================================
 SELECT
-    AVG(preparation_time) AS avg_prep_time
+    ROUND(AVG(EXTRACT(EPOCH FROM preparation_time)/60.0)::numeric, 2) AS avg_prep_time_min
 FROM preparation_duration;
 
 
@@ -31,21 +32,24 @@ FROM preparation_duration;
 -- 4. Cancel rate
 -- =====================================
 SELECT
-    COUNT(*) FILTER (WHERE order_status='CANCELLED')::float
-    /
-    COUNT(*) AS cancel_rate
+    ROUND(
+        (
+            COUNT(*) FILTER (WHERE order_status = 'CANCELLED')::numeric
+            / NULLIF(COUNT(*), 0)
+        ), 4
+    ) AS cancel_rate
 FROM orders;
 
 
 -- =====================================
--- 5. Orders by category
+-- 5. Orders by cuisine category
 -- =====================================
 SELECT
-    oc.category_name,
+    r.cuisine_category,
     COUNT(*) AS total_orders
 FROM orders o
-JOIN order_categories oc USING(category_id)
-GROUP BY oc.category_name
+JOIN restaurants r USING(restaurant_id)
+GROUP BY r.cuisine_category
 ORDER BY total_orders DESC;
 
 
@@ -53,39 +57,37 @@ ORDER BY total_orders DESC;
 -- 6. Impact of traffic on delivery
 -- =====================================
 SELECT
-    tl.traffic_name,
-    AVG(e.ts - o.created_at) AS avg_delivery_time
-FROM events e
-JOIN traffic_levels tl USING(traffic_id)
-JOIN event_types et USING(event_type_id)
-JOIN orders o USING(order_id)
-WHERE et.event_name='DELIVERED'
-GROUP BY tl.traffic_name;
+    o.traffic_level,
+    ROUND(AVG(EXTRACT(EPOCH FROM d.delivery_time)/60.0)::numeric, 2) AS avg_delivery_time_min
+FROM orders o
+JOIN delivery_duration d USING(order_id)
+GROUP BY o.traffic_level
+ORDER BY avg_delivery_time_min;
 
 
 -- =====================================
 -- 7. Impact of weather on delivery
 -- =====================================
 SELECT
-    wl.weather_name,
-    AVG(e.ts - o.created_at) AS avg_delivery_time
-FROM events e
-JOIN weather_levels wl USING(weather_id)
-JOIN event_types et USING(event_type_id)
-JOIN orders o USING(order_id)
-WHERE et.event_name='DELIVERED'
-GROUP BY wl.weather_name;
+    o.weather_level,
+    ROUND(AVG(EXTRACT(EPOCH FROM d.delivery_time)/60.0)::numeric, 2) AS avg_delivery_time_min
+FROM orders o
+JOIN delivery_duration d USING(order_id)
+GROUP BY o.weather_level
+ORDER BY avg_delivery_time_min;
 
 
 -- =====================================
--- 8. Rider workload
+-- 8. Rider workload + performance
 -- =====================================
 SELECT
     r.rider_id,
-    COUNT(e.order_id) AS deliveries
-FROM events e
-JOIN event_types et USING(event_type_id)
+    r.rider_name,
+    r.vehicle_type,
+    COUNT(d.delivery_id) AS total_deliveries,
+    ROUND(AVG(d.delivery_minutes)::numeric, 2) AS avg_delivery_minutes,
+    ROUND(AVG(d.total_minutes)::numeric, 2) AS avg_total_minutes
+FROM deliveries d
 JOIN riders r USING(rider_id)
-WHERE et.event_name='DELIVERED'
-GROUP BY r.rider_id
-ORDER BY deliveries DESC;
+GROUP BY r.rider_id, r.rider_name, r.vehicle_type
+ORDER BY total_deliveries DESC, avg_total_minutes ASC;

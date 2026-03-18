@@ -1,6 +1,12 @@
 import csv
 import random
 from datetime import datetime, timedelta
+from pathlib import Path
+
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+CSV_DIR = PROJECT_DIR / "csv"
+
+CSV_DIR.mkdir(exist_ok=True)
 
 random.seed(42)
 
@@ -224,11 +230,11 @@ if __name__ == "__main__":
     riders = build_riders()
     orders, order_events, deliveries = generate_orders_and_events(restaurants, riders)
 
-    write_csv("restaurants.csv", restaurants)
-    write_csv("riders.csv", riders)
-    write_csv("orders.csv", orders)
-    write_csv("order_events.csv", order_events)
-    write_csv("deliveries.csv", deliveries)
+    write_csv(CSV_DIR / "restaurants.csv", restaurants)
+    write_csv(CSV_DIR / "riders.csv", riders)
+    write_csv(CSV_DIR / "orders.csv", orders)
+    write_csv(CSV_DIR / "order_events.csv", order_events)
+    write_csv(CSV_DIR / "deliveries.csv", deliveries)
 
     print("CSV generados correctamente.")
     print(f"restaurants: {len(restaurants)}")
