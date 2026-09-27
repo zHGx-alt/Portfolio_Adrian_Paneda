@@ -72,7 +72,6 @@ Git · GitHub · Docker · SQLite
 
 ## Contact
 
-📍 Bilbao, Spain  
 📧 Email: adelafiguera180@gmail.com  
 💼 LinkedIn: https://www.linkedin.com/in/adrian-paneda-de-la-figuera/
 
