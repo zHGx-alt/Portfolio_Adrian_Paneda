@@ -22,13 +22,15 @@
 
 ## Overview
 
-This project analyzes user behavior on an ecommerce platform to understand how customers interact with products, navigate the purchase funnel, and identify factors influencing engagement and conversions.
+This project analyzes user behavior in an ecommerce platform to uncover patterns in customer interactions, identify conversion bottlenecks, and evaluate product performance.
 
-The objective is to transform raw event-level ecommerce data into actionable business insights using Python, SQL, and Power BI.
+The main goal is not only to build a dashboard, but to simulate a real-world analytics workflow where raw event-level data is transformed into business insights that can support decision-making.
 
-This project demonstrates a complete end-to-end analytics workflow:
+The project follows an end-to-end pipeline:
 
-Raw Data → Data Cleaning → Exploratory Analysis → SQL Storage → BI Dashboard
+Raw Data → Data Cleaning → Exploratory Analysis → SQL Storage → Power BI Dashboard
+
+Special focus is placed on understanding the conversion funnel, user activity patterns, and identifying opportunities to improve revenue and engagement.
 
 ## Business Questions
 
@@ -207,16 +209,18 @@ Interactive visualization of analytical results.
 - Conversion behavior insights
 - Brand performance dashboards
 
+
 ## Key Insights
 
-Preliminary observations from the dataset analysis:
+- **Conversion rate is low (~1.6%)**, indicating potential friction in the purchase funnel. This suggests opportunities for UX optimization or pricing adjustments.
 
-- Product views constitute the majority of events, with purchases representing a small percentage
-- A limited number of product categories account for most user interactions
-- User activity exhibits clear daily patterns
-- Brand visibility correlates with engagement levels
+- **User activity peaks between mid-morning and early afternoon**, highlighting optimal time windows for promotions and marketing campaigns.
 
-These findings demonstrate how behavioral analytics can inform ecommerce product and marketing strategies.
+- **A small number of categories drive the majority of revenue**, with electronics (especially smartphones) dominating performance.
+
+- **Some products show high visibility but low conversion rates**, indicating potential issues such as pricing, competition, or product positioning.
+
+- **Cart abandonment is significant**, suggesting possible improvements in checkout experience or incentives to complete purchases..
 
 ## Skills Demonstrated
 
@@ -228,6 +232,7 @@ This project showcases essential data analytics competencies:
 - Business-oriented analytical thinking
 - Data visualization with Power BI
 - End-to-end analytics workflow implementation
+- Analytical thinking and business insight generation
 
 ## Reproducibility
 
