@@ -18,3 +18,9 @@ ecommerce-analytics-project/data/
 # --- OS / Editor ---
 .DS_Store
 .vscode/
+
+# --- Ignore all CSV files ---
+*.csv
+
+# --- Ignore all unfinished files ---
+delivery_analysis_app/
